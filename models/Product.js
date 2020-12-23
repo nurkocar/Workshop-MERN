@@ -1,7 +1,9 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const { model } = require('./Category');
 const { Schema } = mongoose;
+
 const schema = new Schema({
-    productName:{
+    productName: {
         type: String,
         required: true,
     },
@@ -25,18 +27,12 @@ const schema = new Schema({
     },
     status: {
         type: String,
-        default: "created",
+        default: 'created',
     },
-    createdDate: {
-        type: Date,
-        default: Date.now,
-    },
-    updatedDate: {
+    deletedAt: {
         type: Date,
     },
-    deletedDate: {
-        type: Date,
-    },
-});
 
-module.exports = Product = mongoose.model("Product", schema);
+}, {timestamps:true, collection:'Products'});
+
+module.exports = Product = mongoose.model('Product', schema);
